@@ -1,0 +1,87 @@
+html {
+   
+   
+    background: #f2f2f2; 
+
+}
+
+* {box-sizing: border-box;}
+/** body {font-family: 'Bebas Neue', 'Castoro', cursive; } **/
+
+
+
+        /** body {
+    background: #454545; 
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;  
+    max-width: 800px;
+    padding: 2em 2em 4em;
+} **/
+
+
+.round {
+ 
+    border-radius: 150px; /* Радиус скругления */
+   /*  box-shadow: 0 0 0 3px #f2f2f2, 0 0 13px rgba(0, 0, 0, 0); Параметры теней */
+    text-align: center;
+    margin-bottom: 0px;
+    
+
+   }
+ 
+/**ЦЕНТРИРОВАНИЕ ВЕРТИКАЛЬ+ГОРИЗОНТАЛЬ**/
+
+
+
+/* добавим горизонтальное центрирование */
+.outer {
+  text-align: center;
+    margin-bottom: 0px;
+}
+
+/**ЦЕНТРИРОВАНИЕ ВЕРТИКАЛЬ+ГОРИЗОНТАЛЬ**/
+ 
+
+h1{
+    
+    font-family: 'Bebas Neue', cursive; 
+    width: 345px;
+    height: 80;
+    font-size: 72px;
+    text-align: center;
+    padding: 0px
+    color: #454545;
+    margin: 0 auto;
+    
+   }
+
+.p1{
+    font-family: 'Bebas Neue', cursive;
+    width: 345px;
+    height: 65;
+    text-align: center; 
+    margin: 0 auto;
+}
+
+/**--------------------------------------------------------------------------------**/
+
+
+
+img {
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+
+img:hover {
+ -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg); }

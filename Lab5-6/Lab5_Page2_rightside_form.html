@@ -1,0 +1,303 @@
+<html></html>
+<head>
+    
+    
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">  
+     
+    
+
+<script>
+setTimeout(function(){
+	document.body.classList.add('body_visible');
+}, 200);
+</script>
+
+ 
+
+    <style type="text/css">
+         
+         
+         
+         
+         html {
+   
+   
+    background: #f2f2f2; 
+
+}
+        
+        #prompt-form {
+  display: inline-block;
+  padding: 0px;
+  width: 200px;
+    
+  border: 1px solid black;
+  background-color: #2e2e2e;
+  vertical-align: middle;
+            
+}
+
+#prompt-form-container {
+font-family: 'Bebas Neue', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+    
+    color: #f2f2f2;
+}
+
+#prompt-form-container:before {
+  display: inline-block;
+  height: 100%;
+  content: '';
+  vertical-align: middle;
+}
+
+#cover-div {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 9000;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  opacity: 0.3;
+}
+
+#prompt-form input[name="text"] {
+  display: block;
+  margin: 10px;
+  width: 180px;
+}
+        
+       .body_hide {
+	opacity: 0;
+	transition: .9s opacity ease-in-out;
+}
+.body_visible {
+	opacity: 1;
+}   
+        fieldset{
+            font-family: 'Bebas Neue', cursive;
+        }
+        
+         h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size:22px;
+             text-align: left;
+             width: 150px;
+            height: 10;
+           margin:15px 10px;
+             padding: 0px;
+         }
+         
+         p{ font-family: 'Poiret One', cursive;
+             margin:15px 10px;
+             width: 250px;
+            height: 6;
+             
+         }
+         
+     .lab6, input { font-family: 'Bebas Neue', cursive;
+             margin:10px 5px;
+            
+        }
+        
+        
+        
+         
+    </style>
+</head>
+<body class="body_hide">
+ 
+
+    <h2>This is form</h2>
+
+  <input type="button" value="Click me" id="show-button">
+
+
+  <div id="prompt-form-container">
+    <form id="prompt-form">
+      <div id="prompt-message"></div>
+      <input name="text" type="text">
+      <input type="submit" value="Ok">
+      <input  type="button" name="cancel" value="Cancel" >
+    </form>
+  
+
+  <script>
+    // Показать полупрозрачный DIV, чтобы затенить страницу
+    // (форма располагается не внутри него, а рядом, потому что она не должна быть полупрозрачной)
+    function showCover() {
+      let coverDiv = document.createElement('div');
+      coverDiv.id = 'cover-div';
+
+      // убираем возможность прокрутки страницы во время показа модального окна с формой
+      document.body.style.overflowY = 'hidden';
+
+      document.body.append(coverDiv);
+    }
+
+    function hideCover() {
+      document.getElementById('cover-div').remove();
+      document.body.style.overflowY = '';
+    }
+
+    function showPrompt(text, callback) {
+      showCover();
+      let form = document.getElementById('prompt-form');
+      let container = document.getElementById('prompt-form-container');
+      document.getElementById('prompt-message').innerHTML = text;
+      form.text.value = '';
+
+      function complete(value) {
+        hideCover();
+        container.style.display = 'none';
+        document.onkeydown = null;
+        callback(value);
+      }
+
+      form.onsubmit = function() {
+        let value = form.text.value;
+        if (value == '') return false; // игнорируем отправку пустой формы
+
+        complete(value);
+        return false;
+      };
+
+      form.cancel.onclick = function() {
+        complete(null);
+      };
+
+      document.onkeydown = function(e) {
+        if (e.key == 'Escape') {
+          complete(null);
+        }
+      };
+
+      let lastElem = form.elements[form.elements.length - 1];
+      let firstElem = form.elements[0];
+
+      lastElem.onkeydown = function(e) {
+        if (e.key == 'Tab' && !e.shiftKey) {
+          firstElem.focus();
+          return false;
+        }
+      };
+
+      firstElem.onkeydown = function(e) {
+        if (e.key == 'Tab' && e.shiftKey) {
+          lastElem.focus();
+          return false;
+        }
+      };
+
+      container.style.display = 'block';
+      form.elements.text.focus();
+    }
+
+    document.getElementById('show-button').onclick = function() {
+      showPrompt("Type something", function(value) {
+        alert("You typed: " + value);
+      });
+    };
+  </script>
+        
+
+        
+    </div>
+    
+    <div class = lab6>
+
+ <form action="https://tasteslikehummus.tumblr.com" method="get" target="right">
+      
+        
+           
+            <table width="500px">
+                <tr>
+                    <th align="left">choose multiple answers:</th>
+                    <th align="left">choose one answer:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="chb_1" type="checkbox">
+                        <label for="chb_1">Number 1</label><br>
+                        <input id="chb_2" type="checkbox">
+                        <label for="chb_2">Number 2</label><br>
+                        <input id="chb_3" type="checkbox">
+                        <label for="chb_3">Number 3</label><br>
+                        <input id="chb_4" type="checkbox">
+                        <label for="chb_4">Number 4</label><br>
+                        <input id="chb_5" type="checkbox">
+                        <label for="chb_5">Number 5</label>
+                    </td>
+                    <td>
+                        <input id="r_1" name="variations" type="radio">
+                        <label for="r_1">Number 1</label><br>
+                        <input id="r_2" name="variations" type="radio">
+                        <label for="r_2">Number 2</label><br>
+                        <input id="r_3" name="variations" type="radio">
+                        <label for="r_3">Number 3</label><br>
+                        <input id="r_4" name="variations" type="radio">
+                        <label for="r_4">Number 4</label>
+                    </td>
+                </tr>
+            </table><br><br>
+
+
+
+            <label for="sel">Список</label><br>
+            <select id="sel" size="5">
+                <option selected value="var_1">Number 1</option>
+                <option value="var_2">Number 2</option>
+                <option value="var_3">Number 3</option>
+                <option value="var_4">Number 4</option>
+                <option value="var_5">Number 5</option>
+                <option value="var_6">Number 6</option>
+                <option value="var_7">Number 7</option>
+                <option value="var_8">Number 8</option>
+            </select><br><br>
+
+            <label for="mul_sel">drop-down list</label>
+            <select id="mul_sel">
+                <option selected value="mul_var_1">Number 1</option>
+                <option value="mul_var_2">Number 2</option>
+                <option value="mul_var_3">Number 3</option>
+                <option value="mul_var_4">Number 4</option>
+                <option value="mul_var_5">Number 5</option>
+            </select><br><br>
+
+            <label for="dl">Text box based list</label>
+            <input type="text" name="datalist1" list="comp_combobox_datalist" id="dl"/>
+            <datalist id="comp_combobox_datalist">
+                <option selected value="dl_1">Number 1</option>
+                <option value="dl_2">Number 2</option>
+                <option value="dl_3">Number 3</option>
+                <option value="dl_4">Number 4</option>
+            </datalist>
+      
+
+        
+            <legend>Send me something</legend>
+            <textarea rows="6" cols="90"></textarea>
+        
+
+        
+        <input type="submit">
+        <input type="reset">
+    
+  
+    </form>
+        
+    </div>    
+</body>

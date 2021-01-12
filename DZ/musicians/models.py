@@ -12,8 +12,9 @@ class Musician(models.Model):
 class Song(models.Model):
     Song_id = models.AutoField(primary_key=True)
     Musician_key = models.ForeignKey(Musician, on_delete=models.CASCADE)
-    slug = models.SlugField(default=1)
+    slug = models.CharField(max_length=1000)
     Song_name = models.CharField(max_length=100)
+  
     duration = models.CharField(max_length=50)
     img = models.CharField(max_length=100)
 

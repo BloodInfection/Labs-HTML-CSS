@@ -38,10 +38,14 @@
         <table class="table table-light table-borderless" id="VC-table">
             <tbody>
 
-                    <td class="align-top text-secondary" style="text-align: left" width="50%"><h1> {{song.Song_name}} </h1></td>
+					<td class="align-top text-secondary" style="text-align: left" width="40%">
+						<h1> {{song.Song_name}} </h1>
+						<p>{{song.slug}}</p>
+					</td>
                     {% load static %}
-                    {% with 'musicians/'|add:song.img as image %}
-                    <td class="align-right" style="text-align: right" rowspan="2"><img src="{% static image %}" class="rounded img-fluid" style="max-width: 100%; height: 400px" ><h4 class ="text-secondary">Длительность {{song.duration}}</h4></td>
+					{% with 'musicians/'|add:song.img as image %}
+		
+                    <td class="align-right" style="text-align: right" rowspan="5"><img src="{% static image %}" class="rounded img-fluid" style="max-width: 100%; height: 400px" ><h4 class ="text-secondary">Длительность {{song.duration}}</h4></td>
                     {% endwith %}
                 </tr>
                 <tr>
